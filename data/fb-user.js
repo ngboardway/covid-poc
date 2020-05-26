@@ -14,7 +14,7 @@ export function setupUserListener(id, updateFunc) {
     .database()
     .ref(`users/${id}`)
     .on('value', (snapshot) => {
-      console.log('data listener fires up with: ', snapshot);
+      // console.log('data listener fires up with: ', snapshot);
       if (snapshot?.val()) {
         const fbObject = snapshot.val();
         updateFunc(fbObject);

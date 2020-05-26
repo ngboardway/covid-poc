@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, SafeAreaView, Keyboard, TouchableWithoutFeedbac
 import { Button, Input } from 'react-native-elements';
 import { Feather } from '@expo/vector-icons';
 
-const YesNoQuestion = ({ question }) => {
+const InputQuestion = ({ question }) => {
   return (
     <View>
       <Button
@@ -16,4 +16,4 @@ const YesNoQuestion = ({ question }) => {
   );
 };
 
-export default YesNoQuestion;
+export default InputQuestion;

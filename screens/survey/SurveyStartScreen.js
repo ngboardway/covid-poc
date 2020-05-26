@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
+import { Button } from 'react-native-elements';
 import { setupUserListener } from '../../data/fb-user';
-import { State } from 'react-native-gesture-handler';
 
 const SurveyStartScreen = ({ route, navigation }) => {
   const [user, setUser] = useState();
@@ -9,7 +9,6 @@ const SurveyStartScreen = ({ route, navigation }) => {
   useEffect(() => {
     if (route.params?.userId) {
       setupUserListener(route.params.userId, (u) => {
-        console.log(u);
         setUser(u);
       });
     }
@@ -18,6 +17,9 @@ const SurveyStartScreen = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <Text> {user?.firstName} </Text>
+      <Button
+        title="Begin Survey"
+        onPress={() => navigation.navigate('Identification')} />
     </View>
   )
 }

@@ -25,7 +25,7 @@ const ConfigureUserDetailsScreen = ({ route, navigation }) => {
     const user = { email, firstName, lastName, gNumber };
 
     setUser(user, userId).then((val) => {
-      console.log('Ref for new user: ', val);
+      // console.log('Ref for new user: ', val);
     }).then(() => {
       navigation.navigate('Start Survey');
     }).catch((err) => {

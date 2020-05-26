@@ -14,19 +14,22 @@ const EntryScreen = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Button
+      {/* <Button
         title="Sign In"
         onPress={() => navigation.navigate('Sign In')} />
       <Button
         title="Sign Up"
-        onPress={() => navigation.navigate('Sign Up')} />        
+        onPress={() => navigation.navigate('Sign Up')} />         */}
+      <Button
+        title="Let's Go!"
+        onPress={() => navigation.navigate('Identification')} />
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+        container: {
+        flex: 1,
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',

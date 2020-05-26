@@ -35,10 +35,13 @@ const SignInScreen = ({ navigation }) => {
     <View>
       <Input
         placeholder='Enter email'
+        autoCapitalize="none"
         value={email}
         onChangeText={setEmail} />
       <Input
         placeholder='Enter password'
+        autoCapitalize="none"
+        secureTextEntry={true}
         value={password}
         onChangeText={setPassword} />
       <Button
