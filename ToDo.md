@@ -7,14 +7,15 @@
 - [ ] Figure out a different method for visitors
 - [x] Ability to enter First/Last/G#
 - [ ] Restrict navigation so that they can't go back during authentication
-- [ ] Update inputs --> password input doesn't show password && don't autocapitalize
+- [x] Update inputs --> password input doesn't show password && don't autocapitalize
 
 ## Survey
 - [ ] Set up the question set
 - [ ] Set up the survey workflow
 - [ ] Set up the campuses and buildings
-- [ ] Further develop the question component
-
+- [ ] Create the yes/ no question component
+- [x] Create the select question component
+- [ ] Create the input question component
 
 ## General
 - [ ] Menu for the ability to sign out/ update details
