@@ -7,6 +7,7 @@
 - [ ] Figure out a different method for visitors
 - [x] Ability to enter First/Last/G#
 - [ ] Restrict navigation so that they can't go back during authentication
+- [ ] Update inputs --> password input doesn't show password && don't autocapitalize
 
 ## Survey
 - [ ] Set up the question set
