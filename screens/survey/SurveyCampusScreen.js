@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
-import { campuses } from '../../data/fb-questions'
+import { campuses, buildings } from '../../data/fb-questions'
 import SelectQuestion from '../../components/SelectQuestion';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { View, Text, StyleSheet } from 'react-native';
+import NextArrow from '../../components/NextArrow';
 
 const SurveyCampusScreen = ({ route, navigation }) => {
+  navigation.setOptions({
+    headerLeft: () => (<View></View>)
+  })
+
   const [selected, setSelected] = useState('');
 
   const campusMap = campuses.map((val, idx) => {
@@ -15,8 +19,9 @@ const SurveyCampusScreen = ({ route, navigation }) => {
   })
 
   const navigateToNextQuestion = () => {
-    if (selected == 'Health Campus') {
-      navigation.navigate('Select Building');
+    const campusWithBuilding = Object.keys(buildings);
+    if (campusWithBuilding.includes(selected)) {
+      navigation.navigate('Select Building', { campus: selected });
     } else {
       navigation.navigate('Symptoms');
     }
@@ -24,14 +29,12 @@ const SurveyCampusScreen = ({ route, navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Select one of the following: </Text>
+      <Text style={styles.title}>Choose a GVSU campus: </Text>
       <SelectQuestion
         data={campusMap}
         selectAction={setSelected} />
-      <TouchableOpacity
-        onPress={navigateToNextQuestion}>
-        <Feather name="arrow-right" size={24} color="black" />
-      </TouchableOpacity>
+      <NextArrow
+        navigateAction={navigateToNextQuestion} />
     </View>
   );
 }

@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { userTypes } from '../../data/fb-questions'
 import SelectQuestion from '../../components/SelectQuestion';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import { View, Text, StyleSheet } from 'react-native';
+import NextArrow from '../../components/NextArrow';
 
 const SurveyIdentificationScreen = ({ route, navigation }) => {
+  navigation.setOptions({
+    headerLeft: () => (<View></View>)
+  })
+  
   const [selected, setSelected] = useState('');
 
-  const update = (val) => {
-    console.log('Updated: ', val);
-    setSelected(val);
-  }
   const userMap = userTypes.map((val, idx) => {
     return {
       title: val,
@@ -31,11 +31,9 @@ const SurveyIdentificationScreen = ({ route, navigation }) => {
       <Text style={styles.title}>Select one of the following: </Text>
       <SelectQuestion
         data={userMap}
-        selectAction={update} />
-      <TouchableOpacity
-        onPress={navigateToNextQuestion}>
-        <Feather name="arrow-right" size={24} color="black" />
-      </TouchableOpacity>
+        selectAction={setSelected} />
+      <NextArrow
+        navigateAction={navigateToNextQuestion} />
     </View>
   );
 }

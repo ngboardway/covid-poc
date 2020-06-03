@@ -2,17 +2,26 @@ import React, { useState } from 'react';
 import { buildings } from '../../data/fb-questions'
 import SelectQuestion from '../../components/SelectQuestion';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
-import { Feather } from '@expo/vector-icons';
+import NextArrow from '../../components/NextArrow';
 
 const SurveyBuildingScreen = ({ route, navigation }) => {
+  navigation.setOptions({
+    headerLeft: () => (<View></View>)
+  })
+  
+  const { campus } = route.params;
   const [selected, setSelected] = useState('');
 
-  const buildingMap = buildings["Health Campus"].map((val, idx) => {
+  const buildingMap = buildings[campus].map((val, idx) => {
     return {
       title: val,
       id: `${idx + 1}`
     };
   })
+
+  const navigateToNextQuestion = () => {
+    navigation.navigate('Symptoms');
+  }
 
   return (
     <View style={styles.container}>
@@ -20,10 +29,7 @@ const SurveyBuildingScreen = ({ route, navigation }) => {
       <SelectQuestion
         data={buildingMap}
         selectAction={setSelected} />
-      <TouchableOpacity
-        onPress={navigateToNextQuestion}>
-        <Feather name="arrow-right" size={24} color="black" />
-      </TouchableOpacity>
+      <NextArrow navigateAction={navigateToNextQuestion} />
     </View>
   );
 }

@@ -9,6 +9,9 @@ import SurveyIdentificationScreen from './screens/survey/SurveyIdentificationScr
 import ConfigureUserDetailsScreen from './screens/auth/ConfigureUserDetailsScreen';
 import SurveyCampusScreen from './screens/survey/SurveyCampusScreen';
 import SurveyBuildingScreen from './screens/survey/SurveyBuildingScreen';
+import SurveySymptomsScreen from './screens/survey/SurveySymptomsScreen';
+import SurveyResultsScreen from './screens/survey/SurveyResultsScreen';;
+import { Text } from 'react-native';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -17,7 +20,12 @@ export default function App() {
     headerStyle: {
       backgroundColor: '#0065a4'
     },
-    headerTintColor: '#fff'
+    headerTintColor: '#fff',
+    headerTitle: () => {
+      return (
+        <Text style={{color: '#fff'}}>COVID-19 Screening Requirement</Text>
+      )
+    }
   }
   return (
     <NavigationContainer>
@@ -47,6 +55,12 @@ export default function App() {
         <Stack.Screen
           name="Select Building"
           component={SurveyBuildingScreen} />
+        <Stack.Screen
+          name="Symptoms"
+          component={SurveySymptomsScreen} />
+        <Stack.Screen
+          name="Results"
+          component={SurveyResultsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -31,9 +31,10 @@ export var campuses = [
   "Allendale",
   "Health Campus",
   "Pew Campus",
-  "Traverse City",
+  "Battle Creek Regional Outreach Center",
+  "Detroit",
   "Holland",
-  "Detroit"
+  "Traverse City"
 ];
 
 export var buildings = {
@@ -41,31 +42,30 @@ export var buildings = {
     [
       'Cook DeVos Center for Health Science (CHS)',
       'Raleigh Frankenstein Hall (RFH)'
-    ]
+    ],
+  "Allendale": [
+    "Zumberg Hall"
+  ]
 };
 
 export var symptomQuestions = [{
-  id: 5,
+  id: 1,
   questionType: "y/n",
-  page: 5,
   text: 'Do you have a temperature greater than 100.4 F?'
 },
 {
-  id: 6,
+  id: 2,
   questionType: 'y/n',
-  page: 5,
   text: 'Do you have a new onset of a cough?'
 },
 {
-  id: 7,
+  id: 3,
   questionType: 'y/n',
-  page: 5,
   text: 'Do you have a new onset of shortness of breath?'
 },
 {
-  id: 8,
+  id: 4,
   questionType: 'y/n',
-  page: 5,
   text: 'Do you have a new onset of two or more of the following symptoms?',
   subOptions: [
     'Extreme tiredness',
@@ -78,8 +78,69 @@ export var symptomQuestions = [{
   ]
 },
 {
-  id: 9,
+  id: 5,
   questionType: 'y/n',
   page: 5,
   text: 'Have you had recent known exposure to someone diagnosed with or having symptoms of COVID-19?'
 }];
+
+
+export var symptomQuestionsSection = [{
+  id: 1,
+  questionType: "y/n",
+  title: 'Do you have a temperature greater than 100.4 F?',
+  data: ["y/n"]
+},
+{
+  id: 2,
+  questionType: 'y/n',
+  title: 'Do you have a new onset of a cough?',
+  data: ["y/n"]
+},
+{
+  id: 3,
+  questionType: 'y/n',
+  title: 'Do you have a new onset of shortness of breath?',
+  data: ["y/n"]
+},
+{
+  id: 4,
+  questionType: 'y/n',
+  title: 'Do you have a new onset of two or more of the following symptoms?',
+  data: [
+    'Extreme tiredness',
+    'Chills/ shakes with chills',
+    'Sore throat',
+    'Headache',
+    'Body aches',
+    'Loss of sense of smell and/or taste',
+    'Diarrhea',
+    'y/n'
+  ]
+},
+{
+  id: 5,
+  questionType: 'y/n',
+  title: 'Have you had recent known exposure to someone diagnosed with or having symptoms of COVID-19?',
+  data: ["y/n"]
+}];
+
+
+
+/*
+
+  - Allendale
+    - Zumberg Hall
+  - Health Campus
+    - same as above
+  - Pew Campus
+    - none
+  - Battle Creek Regional Outreach Center
+    - none
+  - Detroit
+    - none
+  - Holland
+    - none
+  - Traverse City
+    - none
+*/

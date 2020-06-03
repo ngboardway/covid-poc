@@ -6,23 +6,9 @@ import {
   StyleSheet,
   Text,
 } from 'react-native';
-import Constants from 'expo-constants';
+import SelectButton from './SelectButton';
 
 const SelectQuestion = ({ data, selectAction }) => {
-  const Item = ({ id, title, selected }) => {
-    return (
-      <TouchableOpacity
-        onPress={() => onSelect(id)}
-        style={[
-          styles.item,
-          { backgroundColor: selected ? '#6e3b6e' : '#0065a4' },
-        ]}
-      >
-        <Text style={styles.title}>{title}</Text>
-      </TouchableOpacity>
-    );
-  }
-
   const [selected, setSelected] = useState({});
 
   const onSelect = React.useCallback(
@@ -31,7 +17,6 @@ const SelectQuestion = ({ data, selectAction }) => {
       newSelected[id] = !selected[id];
 
       setSelected(newSelected);
-      console.log('New selected: ', newSelected);
       selectAction(data[id - 1].title);
     },
     [selected],
@@ -42,11 +27,11 @@ const SelectQuestion = ({ data, selectAction }) => {
       <FlatList
         data={data}
         renderItem={({ item }) => (
-          <Item
+          <SelectButton
             id={item.id}
             title={item.title}
             selected={!!selected[item.id]}
-            onSelect={onSelect}
+            selectAction={onSelect}
           />
         )}
         keyExtractor={item => item.id}
