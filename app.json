@@ -24,6 +24,10 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "nb.gv.covid-screener"
-    }
+    },
+    "android": {
+      "package": "nb.gv.covid-screener"
+    },
+    "entryPoint": "node_modules/expo/AppEntry.js"
   }
 }
