@@ -10,7 +10,9 @@ import ConfigureUserDetailsScreen from './screens/auth/ConfigureUserDetailsScree
 import SurveyCampusScreen from './screens/survey/SurveyCampusScreen';
 import SurveyBuildingScreen from './screens/survey/SurveyBuildingScreen';
 import SurveySymptomsScreen from './screens/survey/SurveySymptomsScreen';
-import SurveyResultsScreen from './screens/survey/SurveyResultsScreen';;
+import SurveyResultsScreen from './screens/survey/SurveyResultsScreen';
+import NearbyHealthCareScreen from './screens/survey/NearbyHealthCareScreen';
+
 import { Text } from 'react-native';
 
 export default function App() {
@@ -23,7 +25,7 @@ export default function App() {
     headerTintColor: '#fff',
     headerTitle: () => {
       return (
-        <Text style={{color: '#fff'}}>COVID-19 Screening Requirement</Text>
+        <Text style={{ color: '#fff' }}>COVID-19 Screening Requirement</Text>
       )
     }
   }
@@ -61,6 +63,9 @@ export default function App() {
         <Stack.Screen
           name="Results"
           component={SurveyResultsScreen} />
+        <Stack.Screen
+          name="Health"
+          component={NearbyHealthCareScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

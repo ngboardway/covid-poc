@@ -22,7 +22,7 @@ const EntryScreen = ({ navigation }) => {
         onPress={() => navigation.navigate('Sign Up')} />         */}
       <Button
         title="Let's Go!"
-        onPress={() => navigation.navigate('Select Campus')} />
+        onPress={() => navigation.navigate('Health')} />
     </View>
   )
 }
