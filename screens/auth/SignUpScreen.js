@@ -37,7 +37,7 @@ const SignUpScreen = ({ navigation }) => {
         value={password}
         onChangeText={setPassword} />
       <Button
-        title='Sign In'
+        title='Sign Up'
         onPress={() => signUp()} />
     </View>
   )
