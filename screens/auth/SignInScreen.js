@@ -31,6 +31,14 @@ const SignInScreen = ({ navigation }) => {
       })
   }
 
+  const resetPassword = () => {
+    firebase.auth().sendPasswordResetEmail(email).then(function () {
+      navigation.navigate('Validate', { email })
+    }).catch(function (error) {
+      console.log(e)
+    });
+  }
+
   return (
     <View>
       <Input
@@ -44,6 +52,9 @@ const SignInScreen = ({ navigation }) => {
         secureTextEntry={true}
         value={password}
         onChangeText={setPassword} />
+      <Button
+        title="Forgot my password"
+        onPress={resetPassword} />
       <Button
         title='Sign In'
         onPress={() => signIn()} />

@@ -7,19 +7,22 @@ const NearbyHealthCareScreen = () => {
   const [healthcare, setHealthcare] = useState([])
 
   useEffect(() => {
-    // let establishPermissions = async () => {
-    //   return await Geolocation.requestAuthorization('whenInUse')
-    // }
+    let establishPermissions = async () => {
+      return await Geolocation.requestAuthorization('whenInUse')
+    }
 
-    // establishPermissions().then(
-    //   Geolocation.getCurrentPosition((pos) => {
-    //     console.log(pos)
-    //   }, (err) => {
-    //     console.log(err);
-    //   })
-    // ).catch((e) => {
-    //   console.log(e)
-    // })
+    establishPermissions().then(
+      Geolocation.getCurrentPosition((pos) => {
+        getNearbyHealthcare(pos.coords.latitude, pos.coords.longitude, (result) => {
+          console.log(result);
+        })
+        // console.log(pos)
+      }, (err) => {
+        console.log(err);
+      })
+    ).catch((e) => {
+      console.log(e)
+    })
   }, [])
 
   return (

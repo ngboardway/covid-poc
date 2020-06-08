@@ -14,6 +14,8 @@ const SelectQuestion = ({ data, selectAction }) => {
   const onSelect = React.useCallback(
     id => {
       const newSelected = {};
+      console.log('Data: ', data)
+      console.log('Id: ', id);
       newSelected[id] = !selected[id];
 
       setSelected(newSelected);
@@ -22,18 +24,23 @@ const SelectQuestion = ({ data, selectAction }) => {
     [selected],
   );
 
+  const renderButton = ({ index, item }) => {
+    console.log('Item: ', item);
+    return (
+      <SelectButton
+        id={item.id}
+        title={item.title}
+        selected={!!selected[item.id]}
+        selectAction={onSelect}
+      />
+    )
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       <FlatList
         data={data}
-        renderItem={({ item }) => (
-          <SelectButton
-            id={item.id}
-            title={item.title}
-            selected={!!selected[item.id]}
-            selectAction={onSelect}
-          />
-        )}
+        renderItem={renderButton}
         keyExtractor={item => item.id}
         extraData={selected}
       />

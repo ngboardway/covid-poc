@@ -2,7 +2,7 @@ import axios from 'axios';
 import { GOOGLE_MAPS_KEY } from './MapsKey';
 
 const PlacesAPI = axios.create({
-  baseURL: 'https://maps.googleapis.com/maps/api/place/nearbysearch/json'
+  baseURL: 'https://maps.googleapis.com/maps/api/place/nearbysearch'
 });
 
 
@@ -19,9 +19,13 @@ PlacesAPI.interceptors.request.use(
   }
 )
 
-export const getNearbyHealthcare = async (lat, long, callback) => {
-  const response = await PlacesAPI.get(`?key=${GOOGLE_MAPS_KEY}&location=${lat},${long}&radius=1500&type=doctor`);
-  callback(response.data);
+export const getNearbyHealthcare = async (lat, lon, callback) => {
+  try {
+    const response = await PlacesAPI.get(`json?location=${lat},${lon}&radius=1500&type=doctor&key=${GOOGLE_MAPS_KEY}`);
+    callback(response.data);
+  } catch (e) {
+    console.log('Error response: ', e.response);
+  }
 };
 
 export default PlacesAPI;
