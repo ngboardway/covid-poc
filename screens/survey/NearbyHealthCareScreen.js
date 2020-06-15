@@ -1,12 +1,50 @@
 import React, { useState, useEffect } from 'react';
-import { View, StyleSheet } from 'react-native';
-import { getNearbyHealthcare } from '../../api/GoogleMapsSearch';
+import { View, Text } from 'react-native';
+import { getNearbyHealthcare, getPlaceDetails } from '../../api/GoogleMapsSearch';
 import Geolocation from 'react-native-geolocation-service';
-import MapView from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 
 const NearbyHealthCareScreen = () => {
   const [healthcare, setHealthcare] = useState([])
-  const [coords, setCoords] = useState({});
+  const [region, setRegion] = useState({
+    latitude: 17.33233141, longitude: -122.0312186, latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421
+  });
+
+  const getFullPlaceDetails = async (placeId) => {
+    return await getPlaceDetails(placeId);
+  }
+
+  const findProviders = async (lat, lng) => {
+    const providerResults = await getNearbyHealthcare(lat, lng);
+    let providers = [];
+
+    for (var i = 0; i < providerResults.results.length; i++) {
+      var r = providerResults.results[i];
+      const { lat, lng } = r.geometry.location;
+      let coord = {
+        latitude: lat,
+        longitude: lng
+      }
+
+      let title = r.name;
+      let placeId = r.place_id;
+
+      const details = await getFullPlaceDetails(placeId);
+      let description = details.result.formatted_address;
+
+      let entry = {
+        coord,
+        title,
+        description,
+        placeId
+      };
+
+      providers.push(entry);
+    }
+
+    return providers;
+  }
 
   useEffect(() => {
     let establishPermissions = async () => {
@@ -15,12 +53,22 @@ const NearbyHealthCareScreen = () => {
 
     establishPermissions().then(
       Geolocation.getCurrentPosition((pos) => {
-        setCoords(pos.coords);
+        const rg = {
+          latitude: pos.coords.latitude,
+          longitude: pos.coords.longitude
+        };
 
-        getNearbyHealthcare(pos.coords.latitude, pos.coords.longitude, (result) => {
-          console.log(result);
+        const updatedRegion = {
+          ...region,
+          ...rg
+        }
+
+        setRegion(updatedRegion);
+
+        findProviders(rg.latitude, rg.longitude).then((markers) => {
+          setHealthcare(markers);
         })
-        // console.log(pos)
+
       }, (err) => {
         console.log(err);
       })
@@ -29,38 +77,24 @@ const NearbyHealthCareScreen = () => {
     })
   }, [])
 
-  const getInitialRegion = () => {
-    return {
-      region: {
-        latitude: coords.latitude,
-        longitude: coords.longitude,
-        latitudeDelta: 0.0922,
-        longitudeDelta: 0.0421,
-      },
-    };
-  }
-
-  const onRegionChange = (region) => {
-    setRegion({ region });
-  }
-
-  const [region, setRegion] = useState(getInitialRegion());
-
   return (
-    <View style={styles.container}>
+    <View>
+      <Text>Healthcare Providers Near Me</Text>
       <MapView
         region={region}
-        onRegionChange={onRegionChange}
-      />
+        showsUserLocation={true}
+        style={{ flex: 1 }}>
+        {healthcare.map(h => (
+          <Marker
+            coordinate={h.coord}
+            title={h.title}
+            description={h.description}
+            identifier={h.placeId}
+            description={h.description} />
+        ))}
+      </MapView>
     </View>
   )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  }
-})
-
 
 export default NearbyHealthCareScreen;
