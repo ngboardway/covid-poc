@@ -29,7 +29,7 @@ const SurveyBuildingScreen = ({ route, navigation }) => {
     const response = [
       ...initialResponse,
       {
-        title: "building",
+        title: "Building",
         answer: selected
       }
     ]

@@ -1,14 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
+import { createSurveyResponse } from '../../data/fb-responses';
 
 const SurveyResultsScreen = ({ route, navigation }) => {
   navigation.setOptions({
     headerLeft: () => (<View></View>)
   })
 
-  const { response: initialResponse } = route.params;
+  useEffect(() => {
+    if (route.params?.response) {
+      const fullResponse = {
+        questions: route.params.response,
+        dateTime: Date.now()
+      };
 
-  console.log(initialResponse);
+      let userId = fullResponse.questions.find(q => q.title = "User Id").answer;
+      createSurveyResponse(fullResponse, userId);
+    }
+  }, [route.params?.response])
+
+
 
   const navigateAway = (screen) => {
     navigation.navigate(screen);

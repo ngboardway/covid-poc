@@ -17,10 +17,10 @@ const SurveyStartScreen = ({ route, navigation }) => {
   }, [route.params?.userId])
 
   const beginSurvey = (screen) => {
-    const q = { title: "User Id", answer: route.params.userId };
-    const response = [q];
-    navigation.navigate(screen, { response });
+    const question = { title: "User Id", answer: route.params.userId };
+    navigation.navigate(screen, { response: [question] });
   }
+
   return (
     <View style={styles.container}>
       <Text> Welcome, {user?.firstName} </Text>
@@ -29,8 +29,8 @@ const SurveyStartScreen = ({ route, navigation }) => {
         title="Begin Survey"
         onPress={() => beginSurvey("Identification")} />
       <Button
-        title="Symp"
-        onPress={() => beginSurvey('Symptoms')} />
+        title="View My Previous Responses"
+        onPress={() => navigation.navigate('Response History', { userId: route.params.userId})} />
     </View>
   )
 }

@@ -14,7 +14,7 @@ export function setupResponseListener(id, updateFunc) {
         const fbObject = snapshot.val();
         const newArr = [];
         Object.keys(fbObject).map((key, index) => {
-          // console.log(key, '||', index, '||', fbObject[key]);
+          console.log(key, '||', index, '||', fbObject[key]);
           newArr.push({ ...fbObject[key], id: key });
         });
         updateFunc(newArr);

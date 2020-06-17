@@ -26,7 +26,7 @@ const SurveyCampusScreen = ({ route, navigation }) => {
     const updatedResponse = [
       ...initialResponse,
       {
-        title: "campus",
+        title: "Campus",
         answer: selected
       }
     ]

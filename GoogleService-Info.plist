@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>841029772323-ria900j7b3rskvsibp68g1uqn1at42ia.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.841029772323-ria900j7b3rskvsibp68g1uqn1at42ia</string>
+	<key>API_KEY</key>
+	<string>AIzaSyBkpUEiUgnqSxeojapUY_dSiRLwqHDAmd8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>841029772323</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>nb.gv.covid-screener</string>
+	<key>PROJECT_ID</key>
+	<string>covid-poc-efcce</string>
+	<key>STORAGE_BUCKET</key>
+	<string>covid-poc-efcce.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:841029772323:ios:bf43a0b03e9fa47f9f3d96</string>
+	<key>DATABASE_URL</key>
+	<string>https://covid-poc-efcce.firebaseio.com</string>
+</dict>
+</plist>

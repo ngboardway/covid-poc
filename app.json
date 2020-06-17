@@ -23,10 +23,28 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "nb.gv.covid-screener"
+      "bundleIdentifier": "nb.gv.covid-screener",
+      "buildNumber": "1.0.0",
+      "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
-      "package": "nb.gv.covid.screener"
+      "package": "nb.gv.covid.screener",
+      "versionCode": 1,
+      "googleServicesFile": "./google-services.json"
+    },
+    "web": {
+      "config": {
+        "firebase": {
+          "apiKey": "AIzaSyDTI21slj3yhZ3HoQd2SD1VBta23Z90P6c",
+          "authDomain": "covid-poc-efcce.firebaseapp.com",
+          "databaseURL": "https://covid-poc-efcce.firebaseio.com",
+          "projectId": "covid-poc-efcce",
+          "storageBucket": "covid-poc-efcce.appspot.com",
+          "messagingSenderId": "841029772323",
+          "appId": "1:841029772323:web:c7310c7643c082469f3d96",
+          "measurementId": "G-SQ5996Q1QB"
+        }
+      }
     },
     "entryPoint": "node_modules/expo/AppEntry.js"
   }

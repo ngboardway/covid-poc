@@ -12,6 +12,8 @@ import SurveyCampusScreen from './screens/survey/SurveyCampusScreen';
 import SurveyBuildingScreen from './screens/survey/SurveyBuildingScreen';
 import SurveySymptomsScreen from './screens/survey/SurveySymptomsScreen';
 import SurveyResultsScreen from './screens/survey/SurveyResultsScreen';
+import SurveyHistoryScreen from './screens/survey/SurveyHistoryScreen';
+import SurveyResponseDetailsScreen from './screens/survey/SurveyResponseDetailsScreen';
 import NearbyHealthCareScreen from './screens/survey/NearbyHealthCareScreen';
 
 import { Text } from 'react-native';
@@ -70,6 +72,12 @@ export default function App() {
         <Stack.Screen
           name="Health"
           component={NearbyHealthCareScreen} />
+        <Stack.Screen
+          name="Response History"
+          component={SurveyHistoryScreen} />
+        <Stack.Screen
+          name="Response Details"
+          component={SurveyResponseDetailsScreen} />                    
       </Stack.Navigator>
     </NavigationContainer>
   );

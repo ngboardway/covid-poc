@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "841029772323",
+    "firebase_url": "https://covid-poc-efcce.firebaseio.com",
+    "project_id": "covid-poc-efcce",
+    "storage_bucket": "covid-poc-efcce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:841029772323:android:af930f1c7ff2dd079f3d96",
+        "android_client_info": {
+          "package_name": "nb.gv.covid.screener"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "841029772323-iplvg1608erq1akt9fdo3t833aq4u0gi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCeb-o02sxz3FoLLhfoIgVytRWvSA4lNeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "841029772323-iplvg1608erq1akt9fdo3t833aq4u0gi.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "841029772323-ria900j7b3rskvsibp68g1uqn1at42ia.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "nb.gv.covid-screener"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
