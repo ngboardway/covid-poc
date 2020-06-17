@@ -23,12 +23,12 @@
     ],
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "nb.gv.covid-screener",
+      "bundleIdentifier": "nb.gvsu.covid-screener",
       "buildNumber": "1.0.0",
       "googleServicesFile": "./GoogleService-Info.plist"
     },
     "android": {
-      "package": "nb.gv.covid.screener",
+      "package": "nb.gvsu.covid.screener",
       "versionCode": 1,
       "googleServicesFile": "./google-services.json"
     },

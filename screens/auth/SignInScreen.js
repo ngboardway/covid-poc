@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import * as firebase from 'firebase';
 
 const SignInScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState('');
 
   const signIn = () => {
     if (email == "" || password == "") {
@@ -32,6 +32,7 @@ const SignInScreen = ({ navigation }) => {
 
         console.log('Code: ', errorCode);
         console.log('Message: ', errorMessage);
+        setErrorMessage(errorMessage);
       })
   }
 
@@ -50,6 +51,7 @@ const SignInScreen = ({ navigation }) => {
         secureTextEntry={true}
         value={password}
         onChangeText={setPassword} />
+      <Text>{errorMessage}</Text>
       <Button
         style={styles.button}
         title='Sign In'
