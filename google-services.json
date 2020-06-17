@@ -10,7 +10,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:841029772323:android:af930f1c7ff2dd079f3d96",
         "android_client_info": {
-          "package_name": "nb.gv.covid.screener"
+          "package_name": "nb.gvsu.covid.screener"
         }
       },
       "oauth_client": [
@@ -35,7 +35,7 @@
               "client_id": "841029772323-ria900j7b3rskvsibp68g1uqn1at42ia.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "nb.gv.covid-screener"
+                "bundle_id": "nb.gvsu.covid-screener"
               }
             }
           ]
