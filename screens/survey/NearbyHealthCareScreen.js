@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text } from 'react-native';
 import { getNearbyHealthcare, getPlaceDetails } from '../../api/GoogleMapsSearch';
 import Geolocation from 'react-native-geolocation-service';
 import MapView, { Marker } from 'react-native-maps';
@@ -78,22 +77,19 @@ const NearbyHealthCareScreen = () => {
   }, [])
 
   return (
-    <View>
-      <Text>Healthcare Providers Near Me</Text>
-      <MapView
-        region={region}
-        showsUserLocation={true}
-        style={{ flex: 1 }}>
-        {healthcare.map(h => (
-          <Marker
-            coordinate={h.coord}
-            title={h.title}
-            description={h.description}
-            identifier={h.placeId}
-            description={h.description} />
-        ))}
-      </MapView>
-    </View>
+    <MapView
+      region={region}
+      showsUserLocation={true}
+      style={{ flex: 1 }}>
+      {healthcare.map(h => (
+        <Marker
+          coordinate={h.coord}
+          title={h.title}
+          description={h.description}
+          identifier={h.placeId}
+          description={h.description} />
+      ))}
+    </MapView>
   )
 }
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import * as firebase from 'firebase';
 
@@ -9,6 +9,10 @@ const SignInScreen = ({ navigation }) => {
 
 
   const signIn = () => {
+    if (email == "" || password == "") {
+      return;
+    }
+
     firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => {
         console.log('User: ', user);
@@ -31,16 +35,8 @@ const SignInScreen = ({ navigation }) => {
       })
   }
 
-  const resetPassword = () => {
-    firebase.auth().sendPasswordResetEmail(email).then(function () {
-      navigation.navigate('Validate', { email })
-    }).catch(function (error) {
-      console.log(e)
-    });
-  }
-
   return (
-    <View>
+    <View style={styles.container}>
       <Input
         placeholder='Enter email'
         autoCapitalize="none"
@@ -53,13 +49,19 @@ const SignInScreen = ({ navigation }) => {
         value={password}
         onChangeText={setPassword} />
       <Button
-        title="Forgot my password"
-        onPress={resetPassword} />
-      <Button
+        style={styles.button}
         title='Sign In'
         onPress={() => signIn()} />
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+  container: {
+    margin: 10
+  },
+  button: {
+    margin: 10
+  }
+})
 export default SignInScreen;

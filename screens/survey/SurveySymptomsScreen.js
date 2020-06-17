@@ -7,10 +7,11 @@ import SelectButton from '../../components/SelectButton';
 
 const SurveySymptomsScreen = ({ route, navigation }) => {
 
-  navigation.setOptions({
-    headerLeft: () => (<View></View>)
-  })
+  // navigation.setOptions({
+  //   headerLeft: () => (<View></View>)
+  // })
 
+  const { response: initialResponse } = route.params;
   const [selected, setSelected] = useState({});
 
   const onSelect = React.useCallback(
@@ -23,16 +24,40 @@ const SurveySymptomsScreen = ({ route, navigation }) => {
         ...newSelected
       });
     },
-    [selected],
+    [selected]
   );
 
-  const navigateToResults = () => {
-    let selectedCounts = Object.values(selected).filter(v => v == true).length;
-    const flagged = selectedCounts >= 2;
-    navigation.navigate('Results', { flagged });
+  const updateResponse = () => {
+    const answers = symptomQuestionsSection.map(q => {
+      let resp = selected[q.id];
+      return {
+        title: q.title,
+        answer: resp ? "Yes" : "No"
+      }
+    });
+
+    const response = [
+      ...initialResponse,
+      ...answers
+    ]
+
+    return response;
   }
 
-  const renderQuestion = ({ index, item, section: { id, title, data } }) => {
+  const navigateToResults = () => {
+    let responses = Object.values(selected);
+    if (responses.length < symptomQuestionsSection.length) {
+      return;
+    }
+
+    let selectedCounts = responses.filter(v => v == true).length;
+    const flagged = selectedCounts >= 2;
+
+    const response = updateResponse();
+    navigation.navigate('Results', { flagged, response });
+  }
+
+  const renderQuestion = ({ index, item, section: { id } }) => {
     let isNotSelected = selected[id] == false;
     let isSelected = selected[id] == true;
 

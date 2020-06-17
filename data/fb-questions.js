@@ -48,43 +48,6 @@ export var buildings = {
   ]
 };
 
-export var symptomQuestions = [{
-  id: 1,
-  questionType: "y/n",
-  text: 'Do you have a temperature greater than 100.4 F?'
-},
-{
-  id: 2,
-  questionType: 'y/n',
-  text: 'Do you have a new onset of a cough?'
-},
-{
-  id: 3,
-  questionType: 'y/n',
-  text: 'Do you have a new onset of shortness of breath?'
-},
-{
-  id: 4,
-  questionType: 'y/n',
-  text: 'Do you have a new onset of two or more of the following symptoms?',
-  subOptions: [
-    'Extreme tiredness',
-    'Chills/ shakes with chills',
-    'Sore throat',
-    'Headache',
-    'Body aches',
-    'Loss of sense of smell and/or taste',
-    'Diarrhea'
-  ]
-},
-{
-  id: 5,
-  questionType: 'y/n',
-  page: 5,
-  text: 'Have you had recent known exposure to someone diagnosed with or having symptoms of COVID-19?'
-}];
-
-
 export var symptomQuestionsSection = [{
   id: 1,
   questionType: "y/n",

@@ -8,9 +8,11 @@ const SurveyBuildingScreen = ({ route, navigation }) => {
   navigation.setOptions({
     headerLeft: () => (<View></View>)
   })
-  
+
   const { campus } = route.params;
   const [selected, setSelected] = useState('');
+
+  const { response: initialResponse } = route.params;
 
   const buildingMap = buildings[campus].map((val, idx) => {
     return {
@@ -20,7 +22,19 @@ const SurveyBuildingScreen = ({ route, navigation }) => {
   })
 
   const navigateToNextQuestion = () => {
-    navigation.navigate('Symptoms');
+    if (selected == '') {
+      return;
+    }
+
+    const response = [
+      ...initialResponse,
+      {
+        title: "building",
+        answer: selected
+      }
+    ]
+    console.log(response);
+    navigation.navigate('Symptoms', { response });
   }
 
   return (

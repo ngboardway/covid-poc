@@ -1,44 +1,84 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
-import { Button } from 'react-native-elements';
+import React from 'react';
+import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 
 const SurveyResultsScreen = ({ route, navigation }) => {
   navigation.setOptions({
     headerLeft: () => (<View></View>)
   })
 
+  const { response: initialResponse } = route.params;
+
+  console.log(initialResponse);
+
+  const navigateAway = (screen) => {
+    navigation.navigate(screen);
+  }
+
   if (route.params.flagged) {
     return (
-      <View>
-        <Text>
+      <View style={styles.container}>
+        <Text style={styles.infoText}>
           Please stay home and inform your program faculty or your department supervisor.
+        </Text>
+        <Text style={styles.infoText}>
           Your responses suggest that you currently have symptoms that could be consistent with COVID-19 or that you may have been exposed to someone that does.
           You should self-isolate and call your local healthcare provider for medical advice.
         </Text>
-        <Text>Date and Time: {Date.now().toString()}</Text>
+        <Text style={styles.infoText}>Date and Time: {Date.now().toString()}</Text>
         <Text style={styles.directionText}>Please keep this screen up to show as you enter the facility/room.</Text>
-        <Button
-          onPress={navigation.navigate('Health')}
-          title="View Healthcare Providers Near Me" />
+        <TouchableOpacity
+          style={styles.touchables}
+          onPress={() => navigateAway("Health")}>
+          <Text>View Healthcare Providers Near Me</Text>
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={[styles.touchables, { marginTop: 2 }]}
+          onPress={() => navigateAway("Start Survey")}>
+          <Text>Complete Survey</Text>
+        </TouchableOpacity>
       </View>
     );
   } else {
     return (
-      <View>
-        <Text>Thank you for answering the questions on this screening tool.</Text>
-        <Text>Date and Time: {Date.now().toString()}</Text>
+      <View style={styles.container}>
+        <Text style={styles.infoText}>Thank you for answering the questions on this screening tool.</Text>
+        <Text style={styles.infoText}>Date and Time: {Date.now().toString()}</Text>
         <Text style={styles.directionText}>Please keep this screen up to show as you enter the facility/room.</Text>
-        <Button
-          title="Complete Survey"
-          onPress={navigation.navigate("Entry")} />
+        <TouchableOpacity
+          style={styles.touchables}
+          onPress={() => navigateAway("Start Survey")}>
+          <Text>Complete Survey</Text>
+        </TouchableOpacity>
       </View>
     )
   }
 }
 
+const paddedArea = {
+  margin: 10,
+  padding: 5
+}
 const styles = StyleSheet.create({
+  container: {
+    ...paddedArea
+  },
+  touchables: {
+    flexDirection: "row",
+    margin: 35,
+    padding: 15,
+    borderColor: '#b0b1b4',
+    backgroundColor: '#b0b1b4',
+    borderWidth: 1,
+    justifyContent: "center"
+  },
+  infoText: {
+    ...paddedArea,
+    fontSize: 18
+  },
   directionText: {
-    fontWeight: "bold"
+    ...paddedArea,
+    fontWeight: "bold",
+    fontSize: 25
   }
 })
 

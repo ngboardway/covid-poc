@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View } from 'react-native';
+import { View, StyleSheet } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import * as firebase from 'firebase';
 
@@ -27,7 +27,7 @@ const SignUpScreen = ({ navigation }) => {
   }
 
   return (
-    <View>
+    <View style={styles.container}>
       <Input
         placeholder='Enter email'
         value={email}
@@ -37,10 +37,19 @@ const SignUpScreen = ({ navigation }) => {
         value={password}
         onChangeText={setPassword} />
       <Button
+        style={styles.button}
         title='Sign Up'
         onPress={() => signUp()} />
     </View>
   )
 }
 
+const styles = StyleSheet.create({
+  container: {
+    margin: 10
+  },
+  button: {
+    margin: 10
+  }
+})
 export default SignUpScreen;

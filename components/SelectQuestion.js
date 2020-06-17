@@ -14,8 +14,6 @@ const SelectQuestion = ({ data, selectAction }) => {
   const onSelect = React.useCallback(
     id => {
       const newSelected = {};
-      console.log('Data: ', data)
-      console.log('Id: ', id);
       newSelected[id] = !selected[id];
 
       setSelected(newSelected);
@@ -25,7 +23,6 @@ const SelectQuestion = ({ data, selectAction }) => {
   );
 
   const renderButton = ({ index, item }) => {
-    console.log('Item: ', item);
     return (
       <SelectButton
         id={item.id}

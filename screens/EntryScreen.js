@@ -1,28 +1,37 @@
 import React, { useEffect } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { Text, View, StyleSheet, AsyncStorage } from 'react-native';
 import { initDB } from '.././data/fb-base';
 import { Button } from 'react-native-elements';
 
 const EntryScreen = ({ navigation }) => {
+  const findCurrentUser = () => {
+    return AsyncStorage.getItem('currentUserUid');
+  }
+
   useEffect(() => {
     try {
       initDB();
     } catch (err) {
       console.log(err);
     }
+
+    findCurrentUser().then((uid => {
+      if (uid != null) {
+        navigation.navigate('Start Survey', { userId: uid })
+      }
+    }))
   }, []);
 
   return (
     <View style={styles.container}>
       <Button
+        style={styles.button}
         title="Sign In"
         onPress={() => navigation.navigate('Sign In')} />
-      {/*<Button
-        title="Sign Up"
-        onPress={() => navigation.navigate('Sign Up')} />         */}
       <Button
-        title="Let's Go!"
-        onPress={() => navigation.navigate('Health')} />
+        style={styles.button}
+        title="Sign Up"
+        onPress={() => navigation.navigate('Sign Up')} />
     </View>
   )
 }
@@ -34,6 +43,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  button: {
+    marginTop: 10
+  }
 });
 
 export default EntryScreen;

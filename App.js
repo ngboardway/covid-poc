@@ -6,7 +6,7 @@ import SignInScreen from './screens/auth/SignInScreen';
 import SignUpScreen from './screens/auth/SignUpScreen';
 import SurveyStartScreen from './screens/survey/SurveyStartScreen';
 import ConfigureUserDetailsScreen from './screens/auth/ConfigureUserDetailsScreen';
-import ValidateResetPasswordCodeScreen from './screens/auth/ValidateResetPasswordCodeScreen';
+import VistorIdentificationScreen from './screens/survey/VistorIdentificationScreen';
 import SurveyIdentificationScreen from './screens/survey/SurveyIdentificationScreen';
 import SurveyCampusScreen from './screens/survey/SurveyCampusScreen';
 import SurveyBuildingScreen from './screens/survey/SurveyBuildingScreen';
@@ -41,8 +41,8 @@ export default function App() {
           name="Sign In"
           component={SignInScreen} />
         <Stack.Screen
-          name="Validate"
-          component={ValidateResetPasswordCodeScreen} />
+          name="Visitors"
+          component={VistorIdentificationScreen} />
         <Stack.Screen
           name="Sign Up"
           component={SignUpScreen} />

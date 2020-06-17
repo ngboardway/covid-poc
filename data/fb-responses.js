@@ -1,26 +1,23 @@
 import * as firebase from 'firebase';
 import 'firebase/database';
 
-export function setUser(item, id) {
-  return firebase.database().ref(`users/${id}`).push(item);
-}
-
 export function createSurveyResponse(response, userId) {
   return firebase.database().ref(`users/${userId}/responses`).push(response);
 }
 
-export function removeUser(item) {
-  firebase.database().ref(`users/${item.id}`).remove();
-}
-
-export function setupUserListener(id, updateFunc) {
+export function setupResponseListener(id, updateFunc) {
   firebase
     .database()
-    .ref(`users/${id}`)
+    .ref(`users/${id}/responses`)
     .on('value', (snapshot) => {
       if (snapshot?.val()) {
         const fbObject = snapshot.val();
-        updateFunc(fbObject);
+        const newArr = [];
+        Object.keys(fbObject).map((key, index) => {
+          // console.log(key, '||', index, '||', fbObject[key]);
+          newArr.push({ ...fbObject[key], id: key });
+        });
+        updateFunc(newArr);
       } else {
         updateFunc(null);
       }

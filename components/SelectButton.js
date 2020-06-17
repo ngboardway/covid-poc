@@ -1,12 +1,16 @@
 import React from 'react';
 import { TouchableOpacity, Text, StyleSheet } from 'react-native';
 
-const SelectButton = ({ selected, title, selectAction }) => {
+const SelectButton = ({ selected, title, selectAction, id }) => {
   let isSelected = selected == true;
+
+  const selection = () => {
+    selectAction(id)
+  }
 
   return (
     <TouchableOpacity
-      onPress={selectAction}
+      onPress={selection}
       style={[
         styles.button,
         { backgroundColor: isSelected ? '#0065a4' : '#b0b1b4' },

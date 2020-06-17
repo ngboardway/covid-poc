@@ -8,7 +8,8 @@ const SurveyIdentificationScreen = ({ route, navigation }) => {
   navigation.setOptions({
     headerLeft: () => (<View></View>)
   })
-  
+
+  const { response: initialResponse } = route.params;
   const [selected, setSelected] = useState('');
 
   const userMap = userTypes.map((val, idx) => {
@@ -19,10 +20,23 @@ const SurveyIdentificationScreen = ({ route, navigation }) => {
   })
 
   const navigateToNextQuestion = () => {
+    if (selected == '') {
+      return;
+    }
+
+    const response = [
+      ...initialResponse,
+      {
+        title: "User Type",
+        answer: selected
+      }
+    ]
+
+    console.log(response);
     if (selected == 'Visitor') {
-      navigation.navigate('Visitor Identification');
+      navigation.navigate('Visitor Identification', { response });
     } else {
-      navigation.navigate('Select Campus');
+      navigation.navigate('Select Campus', { response });
     }
   }
 
