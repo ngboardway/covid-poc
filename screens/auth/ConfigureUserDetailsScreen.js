@@ -24,27 +24,29 @@ const ConfigureUserDetailsScreen = ({ route, navigation }) => {
     const { email, userId, firstName, lastName, gNumber } = state;
     const user = { email, firstName, lastName, gNumber };
 
-    setUser(user, userId).then((val) => {
-      // console.log('Ref for new user: ', val);
-    }).then(() => {
-      navigation.navigate('Start Survey');
-    }).catch((err) => {
-      console.log('Error: ', err);
-    });
+    setUser(user, userId)
+      .then(() => {
+        navigation.navigate('Start Survey', { userId });
+      }).catch((err) => {
+        console.log('Error: ', err);
+      });
   }
 
   return (
     <View>
       <Input
         placeholder='Enter first name'
+        placeholderTextColor='#b0b1b4'
         value={state.firstName}
         onChangeText={(val) => updateStateObject({ firstName: val })} />
       <Input
         placeholder='Enter last name'
+        placeholderTextColor='#b0b1b4'
         value={state.lastName}
         onChangeText={(val) => updateStateObject({ lastName: val })} />
       <Input
         placeholder='Enter G#'
+        placeholderTextColor='#b0b1b4'
         value={state.gNumber}
         onChangeText={(val) => updateStateObject({ gNumber: val })} />
       <Button

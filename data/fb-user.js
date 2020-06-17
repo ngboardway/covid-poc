@@ -2,7 +2,7 @@ import * as firebase from 'firebase';
 import 'firebase/database';
 
 export function setUser(item, id) {
-  return firebase.database().ref(`users/${id}`).push(item);
+  return firebase.database().ref(`users/${id}`).set(item);
 }
 
 export function createSurveyResponse(response, userId) {

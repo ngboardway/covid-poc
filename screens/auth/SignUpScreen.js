@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text } from 'react-native';
 import { Input, Button } from 'react-native-elements';
 import * as firebase from 'firebase';
 
 const SignUpScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-
+  const [errorMessage, setErrorMessage] = useState('')
 
   const signUp = () => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
@@ -21,6 +21,7 @@ const SignUpScreen = ({ navigation }) => {
 
         console.log('Code: ', errorCode);
         console.log('Message: ', errorMessage);
+        setErrorMessage(errorMessage);
       })
   }
 
@@ -28,12 +29,18 @@ const SignUpScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Input
         placeholder='Enter email'
+        autoCapitalize="none"
+        placeholderTextColor="#b0b1b4"
         value={email}
         onChangeText={setEmail} />
       <Input
         placeholder='Enter password'
+        placeholderTextColor='#b0b1b4'
         value={password}
+        autoCapitalize="none"
+        secureTextEntry={true}
         onChangeText={setPassword} />
+      <Text>{errorMessage}</Text>
       <Button
         style={styles.button}
         title='Sign Up'

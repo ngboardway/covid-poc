@@ -25,6 +25,8 @@ const SurveyResultsScreen = ({ route, navigation }) => {
     navigation.navigate(screen);
   }
 
+  const timestamp = new Date(Date.now()).toDateString();
+
   if (route.params.flagged) {
     return (
       <View style={styles.container}>
@@ -35,7 +37,7 @@ const SurveyResultsScreen = ({ route, navigation }) => {
           Your responses suggest that you currently have symptoms that could be consistent with COVID-19 or that you may have been exposed to someone that does.
           You should self-isolate and call your local healthcare provider for medical advice.
         </Text>
-        <Text style={styles.infoText}>Date and Time: {Date.now().toString()}</Text>
+        <Text style={styles.infoText}>Date and Time: {timestamp}</Text>
         <Text style={styles.directionText}>Please keep this screen up to show as you enter the facility/room.</Text>
         <TouchableOpacity
           style={styles.touchables}
@@ -53,7 +55,7 @@ const SurveyResultsScreen = ({ route, navigation }) => {
     return (
       <View style={styles.container}>
         <Text style={styles.infoText}>Thank you for answering the questions on this screening tool.</Text>
-        <Text style={styles.infoText}>Date and Time: {Date.now().toString()}</Text>
+        <Text style={styles.infoText}>Date and Time: {timestamp}</Text>
         <Text style={styles.directionText}>Please keep this screen up to show as you enter the facility/room.</Text>
         <TouchableOpacity
           style={styles.touchables}

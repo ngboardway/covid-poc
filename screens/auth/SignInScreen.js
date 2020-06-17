@@ -39,11 +39,13 @@ const SignInScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Input
         placeholder='Enter email'
+        placeholderTextColor='#b0b1b4'
         autoCapitalize="none"
         value={email}
         onChangeText={setEmail} />
       <Input
         placeholder='Enter password'
+        placeholderTextColor='#b0b1b4'
         autoCapitalize="none"
         secureTextEntry={true}
         value={password}
