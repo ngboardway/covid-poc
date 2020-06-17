@@ -1,10 +1,8 @@
 import React, { useState } from 'react';
 import {
   SafeAreaView,
-  TouchableOpacity,
   FlatList,
   StyleSheet,
-  Text,
 } from 'react-native';
 import SelectButton from './SelectButton';
 

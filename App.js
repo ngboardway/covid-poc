@@ -15,10 +15,31 @@ import SurveyResultsScreen from './screens/survey/SurveyResultsScreen';
 import SurveyHistoryScreen from './screens/survey/SurveyHistoryScreen';
 import SurveyResponseDetailsScreen from './screens/survey/SurveyResponseDetailsScreen';
 import NearbyHealthCareScreen from './screens/survey/NearbyHealthCareScreen';
-
 import { Text } from 'react-native';
+import * as Analytics from 'expo-firebase-analytics';
+
+// Gets the current screen from navigation state
+const getActiveRouteName = state => {
+  const route = state.routes[state.index];
+  if (route.state) {
+    // Dive into nested navigators
+    return getActiveRouteName(route.state);
+  }
+  return route.name;
+};
 
 export default function App() {
+  const routeNameRef = React.useRef();
+  const navigationRef = React.useRef();
+
+  React.useEffect(() => {
+    const state = navigationRef.current.getRootState();
+
+    // Save the initial route name
+    routeNameRef.current = getActiveRouteName(state);
+  }, []);
+
+
   const Stack = createStackNavigator();
 
   const headerStyling = {
@@ -33,11 +54,20 @@ export default function App() {
     }
   }
   return (
-    <NavigationContainer>
+    <NavigationContainer
+      ref={navigationRef}
+      onStateChange={(state) => {
+        const previousRouteName = routeNameRef.current;
+        const currentRouteName = getActiveRouteName(state);
+        if (previousRouteName !== currentRouteName) {
+          Analytics.setCurrentScreen(currentRouteName, currentRouteName);
+        }
+      }}>
+
       <Stack.Navigator
         screenOptions={headerStyling}>
         <Stack.Screen
-          name="Entry"
+          name="Home"
           component={EntryScreen} />
         <Stack.Screen
           name="Sign In"
@@ -77,7 +107,7 @@ export default function App() {
           component={SurveyHistoryScreen} />
         <Stack.Screen
           name="Response Details"
-          component={SurveyResponseDetailsScreen} />                    
+          component={SurveyResponseDetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

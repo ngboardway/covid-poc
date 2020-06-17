@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { buildings } from '../../data/fb-questions'
 import SelectQuestion from '../../components/SelectQuestion';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 import NextArrow from '../../components/NextArrow';
 
 const SurveyBuildingScreen = ({ route, navigation }) => {

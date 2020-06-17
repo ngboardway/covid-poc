@@ -11,8 +11,6 @@ const SignUpScreen = ({ navigation }) => {
   const signUp = () => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        console.log('User: ', user);
-
         const { uid, email } = user.user;
         navigation.navigate('Configure User', { userId: uid, email });
       })
