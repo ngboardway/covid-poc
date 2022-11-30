@@ -23,7 +23,7 @@
     "axios": "^0.21.2",
     "expo-firebase-analytics": "^2.3.0",
     "expo-firebase-core": "^1.0.0",
-    "firebase": "7.24.0",
+    "firebase": "9.14.0",
     "react-native-elements": "^2.0.0",
     "react-native-geolocation-service": "^5.0.0",
     "react-native-maps": "^0.27.1",
